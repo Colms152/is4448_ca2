@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -15,7 +16,7 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void bGetBeer() throws IOException {
-        String response = HeroAdapter.getHeroes();
+        List<Hero> response = HeroAdapter.getHeroes();
         System.out.println(response);
         assertEquals(1,1);
     }

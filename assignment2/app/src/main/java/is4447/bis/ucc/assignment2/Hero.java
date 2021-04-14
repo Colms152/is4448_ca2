@@ -1,66 +1,69 @@
 package is4447.bis.ucc.assignment2;
 
-/**
- * Created by Michael Gleeson on 18/02/2021
- * Copyright (c) 2021 | gleeson.io
- */
 public class Hero {
-    private String ID, Name, RealName, Rating, Team;
+    private String id;
+    private String name;
+    private String realname;
+    private String rating;
+    private String teamaffiliation;
 
-    public Hero() {
-    }
+    public Hero(String ID, String Name, String Realname, String Rating, String Teamaffiliation) {
+        id = ID;
+        name = Name;
+        realname = Realname;
+        rating = Rating;
+        teamaffiliation = Teamaffiliation;
 
-    public Hero(String ID, String name, String realname, String rating, String team) {
-        this.ID = ID;
-        Name = name;
-        RealName = realname;
-        Rating = rating;
-        Team = team;
-
-    }
-
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getRealName() { return RealName; }
-
-    public void setRealName(String realname) {
-        RealName = realname;
-    }
-
-    public String getRating() {
-        return Rating;
-    }
-
-    public void setRating(String rating) {Rating = rating;}
-
-    public String getTeam() {
-        return Team;
-    }
-
-    public void setTeam(String team) {
-        Team = team;
     }
 
     @Override
     public String toString() {
-        return "id: " + ID + "\n" +
-                "name: " + Name + "\n" +
-                "realname:" + RealName + "\n" +
-                "rating: " + Rating + "\n" +
-                "teamaffiliation: " + Team;
+        return "Hero{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", realname='" + realname + '\'' +
+                ", rating='" + rating + '\'' +
+                ", teamaffiliation='" + teamaffiliation + '\'' +
+                '}';
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getRealname() {
+        return realname;
+    }
+
+    public void setRealname(String realname) {
+        this.realname = realname;
+    }
+
+    public String getRating() {
+        return rating;
+    }
+
+    public void setRating(String rating) {
+        this.rating = rating;
+    }
+
+    public String getTeamaffiliation() {
+        return teamaffiliation;
+    }
+
+    public void setTeamaffiliation(String teamaffiliation) {
+        this.teamaffiliation = teamaffiliation;
     }
 }
