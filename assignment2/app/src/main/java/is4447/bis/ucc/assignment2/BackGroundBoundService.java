@@ -30,7 +30,7 @@ public class BackGroundBoundService extends Service {
 
     public class BackGroundBinder extends Binder {
 
-        private ThreadGroup myThreadGroup = new ThreadGroup("Beer");
+        private ThreadGroup myThreadGroup = new ThreadGroup("Heros");
 
         //Binder methods go in here, these are specific
         //to our implementation. Any public methods will
@@ -44,10 +44,7 @@ public class BackGroundBoundService extends Service {
                 public void run() {
 
                     //Do background stuff here.
-                    ArrayList<Hero> b = null;
-
-                        b = HeroAdapter.getHeroes();
-
+                    ArrayList<Hero> b =  HeroAdapter.getHeroes();
                     Message m = new Message();
                     m.obj = b;
                     h.sendMessage(m);

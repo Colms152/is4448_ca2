@@ -18,24 +18,17 @@ import com.google.gson.JsonSyntaxException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
+
 import org.json.*;
 
 
-/**
- * Created by Michael Gleeson on 18/02/2021
- * Copyright (c) 2021 | gleeson.io
- */
 public class HeroAdapter {
 
 
     public static final String baseURI =
             "https://gleeson.io/IS4447/HeroAPI/v1/Api.php?apicall=";
 
-    private static final Hero convertToBeer (String beerString) {
-        Gson g = new Gson();
-        Hero b = g.fromJson(beerString, Hero.class);
-        return b;
-    }
 
     private static final String convertToString (Hero hero) {
         Gson g = new Gson();
@@ -48,7 +41,7 @@ public class HeroAdapter {
         String heroString = HttpHandler.HttpGetExec(heroURI);
         int strlength = heroString.length();
         String jsonarray  = heroString.substring(68, strlength-2);
-        String[] jsonheros = jsonarray.split("},");
+        String[] jsonheros = jsonarray.split(Pattern.quote("},"));
         System.out.println(jsonheros.length);
         for (int i = 0; i <= jsonheros.length-2; i++) {
             jsonheros[i] = jsonheros[i].concat("}");
@@ -90,23 +83,7 @@ public class HeroAdapter {
         return b;
     }
 
-    public static final Hero putBeer (Hero b) throws JsonSyntaxException {
-        String beerURI = baseURI + "beer/"+b.getId();
-        Gson g = new Gson();
-        String payload = g.toJson(b, Hero.class);
-        //code changed here
-        String beerString = HttpHandler.HttpPutExec(beerURI, payload);
-        b = g.fromJson(beerString, Hero.class);
-        return b;
-    }
 
-    public static final Hero deleteBeer (int beerId) throws JsonSyntaxException {
-        String beerURI = baseURI + "beer/" + beerId;
-        String beerString = HttpHandler.HttpDeleteExec(beerURI);
-        Gson g = new Gson();
-        Hero b = g.fromJson(beerString, Hero.class);
-        return b;
-    }
 
 
 }

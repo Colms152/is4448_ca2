@@ -1,5 +1,7 @@
 package is4447.bis.ucc.assignment2;
 
+import android.content.Context;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,16 +15,23 @@ import java.util.ArrayList;
 
 public class HeroRVAdapter extends RecyclerView.Adapter<HeroRVAdapter.ExampleViewHolder> {
     private ArrayList<Hero> mExampleList;
+    Context context;
+    private final int SHOW_MENU = 1;
+    private final int HIDE_MENU = 2;
 
     public static class ExampleViewHolder extends RecyclerView.ViewHolder {
         public ImageView mImageView;
         public TextView mTextView1;
         public TextView mTextView2;
+        public TextView mTextView3;
+        public TextView mTextView4;
 
         public ExampleViewHolder(View itemView) {
             super(itemView);
             mTextView1 = itemView.findViewById(R.id.textView);
             mTextView2 = itemView.findViewById(R.id.textView2);
+            mTextView3 = itemView.findViewById(R.id.textView3);
+            mTextView4 = itemView.findViewById(R.id.textView4);
 
         }
     }
@@ -44,7 +53,9 @@ public class HeroRVAdapter extends RecyclerView.Adapter<HeroRVAdapter.ExampleVie
         Hero currentItem = mExampleList.get(position);
 
         holder.mTextView1.setText(currentItem.getName());
-        holder.mTextView2.setText(currentItem.getTeamaffiliation());
+        holder.mTextView2.setText(currentItem.getRealname());
+        holder.mTextView3.setText(currentItem.getTeamaffiliation());
+        holder.mTextView4.setText(currentItem.getRating());
     }
 
     @Override
@@ -56,4 +67,5 @@ public class HeroRVAdapter extends RecyclerView.Adapter<HeroRVAdapter.ExampleVie
         mExampleList = filteredList;
         notifyDataSetChanged();
     }
+
 }
