@@ -53,7 +53,27 @@ public class BackGroundBoundService extends Service {
 
             }).start();
 
-        }//end getMeABeer()
+        }//end getMyHeros()
+
+        public void deleteaHero(int id, final Handler h) {
+
+            new Thread(myThreadGroup, new Runnable() {
+
+                @Override
+                public void run() {
+
+                    //Do background stuff here.
+                    String b =  HeroAdapter.getDeleteHero(id);
+                    String d = "gone";
+                    Message m = new Message();
+                    m.obj = d;
+                    h.sendMessage(m);
+
+                }//end run()
+
+            }).start();
+
+        }//end getMyHeros()
 
     }//end BackGroundBinder class
 

@@ -38,7 +38,7 @@ public class ExampleUnitTest {
 
     @Test
     public void cDeleteBeer() throws IOException {
-         int  id = 355;
+         int  id = 506;
          HeroAdapter.getDeleteHero(id);
         assertEquals(1,1);
     }

@@ -61,7 +61,9 @@ public class HeroAdapter {
     }
 
     public static final String getDeleteHero (int heroId) throws JsonSyntaxException {
+        System.out.println("Delete called with id: "+ heroId);
         String heroURI = baseURI + "deletehero&id=" + heroId;
+        System.out.println("Delete called with URI: "+ heroURI);
         String heroString = HttpHandler.HttpGetExec(heroURI);
         return heroString;
     }

@@ -18,8 +18,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+
+import static is4447.bis.ucc.assignment2.HeroAdapter.getDeleteHero;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,9 +36,12 @@ public class MainActivity extends AppCompatActivity {
     public final Handler myCallBack = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            ArrayList<Hero> h = (ArrayList<Hero>)msg.obj;
-            buildRecyclerView(h);
+            if(msg.obj!="gone" ) {
+                ArrayList<Hero> h = (ArrayList<Hero>) msg.obj;
+                buildRecyclerView(h);
+            }
         }
+
     };
 
     protected boolean isBound = false;
@@ -136,6 +142,36 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new HeroRVAdapter(Herolist);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.addOnItemTouchListener(new MyTouchListener(getApplicationContext(), mRecyclerView, new MyTouchListener.OnTouchActionListener() {
+            @Override
+            public void onLeftSwipe(View view, int position) {
+                //code as per your need
+                Toast.makeText(getApplicationContext(), "Left Swipe", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onRightSwipe(View view, int position) {
+                Hero hero = Herolist.get(position);
+                System.out.println(Integer.parseInt(hero.getId()));
+                if (isBound) {
+                    myBinder.deleteaHero(Integer.parseInt(hero.getId()), myCallBack);
+                }
+                Toast.makeText(getApplicationContext(), "Right Swipe", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onClick(View view, int position) {
+                //Movie movie = movieList.get(position);
+                //Toast.makeText(getApplicationContext(), movie.getTitle() + " is selected!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+
+
+        }));
 
 
     }
