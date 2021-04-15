@@ -3,6 +3,7 @@ package is4447.bis.ucc.assignment2;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import static org.junit.Assert.*;
 public class ExampleUnitTest {
     @Test
     public void bGetBeer() throws IOException {
-        List<Hero> response = HeroAdapter.getHeroes();
+        ArrayList<Hero> response = HeroAdapter.getHeroes();
         System.out.println(response);
         assertEquals(1,1);
     }

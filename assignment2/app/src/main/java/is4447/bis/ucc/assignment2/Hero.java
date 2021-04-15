@@ -18,12 +18,12 @@ public class Hero {
 
     @Override
     public String toString() {
-        return "Hero{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", realname='" + realname + '\'' +
-                ", rating='" + rating + '\'' +
-                ", teamaffiliation='" + teamaffiliation + '\'' +
+        return "{" +
+                "\"id\":" + id +
+                ", \"name\":\"" + name + '\"' +
+                ", \"realname\":\"" + realname + '\"' +
+                ", \"rating\":\"" + rating + '\"' +
+                ", \"teamaffiliation\":\"" + teamaffiliation + '\"' +
                 '}';
     }
 

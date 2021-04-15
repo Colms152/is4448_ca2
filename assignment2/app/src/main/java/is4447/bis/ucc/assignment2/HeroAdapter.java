@@ -1,5 +1,14 @@
 package is4447.bis.ucc.assignment2;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -34,7 +43,7 @@ public class HeroAdapter {
         return s;
     }
 
-    public static List<Hero> getHeroes () throws JsonSyntaxException, JsonProcessingException {
+    public static ArrayList<Hero> getHeroes () throws JsonSyntaxException{
         String heroURI = baseURI + "getheroes";
         String heroString = HttpHandler.HttpGetExec(heroURI);
         int strlength = heroString.length();
@@ -45,7 +54,7 @@ public class HeroAdapter {
             jsonheros[i] = jsonheros[i].concat("}");
         }
         System.out.println(jsonheros[0]+"  "+jsonheros[1]);
-        List<Hero> heroes = new ArrayList<Hero>();
+        ArrayList<Hero> heroes = new ArrayList<Hero>();
         //String testString = "{\"id\":369,\"name\":\"Spiderman Johnny\",\"realname\":\"Spiderman Johnny\",\"rating\":10,\"teamaffiliation\":\"Fantastic Four\"}";
         //ObjectMapper objectMapper = new ObjectMapper();
         //objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
@@ -98,4 +107,6 @@ public class HeroAdapter {
         Hero b = g.fromJson(beerString, Hero.class);
         return b;
     }
+
+
 }

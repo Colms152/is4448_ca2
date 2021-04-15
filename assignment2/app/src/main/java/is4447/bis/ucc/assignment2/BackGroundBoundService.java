@@ -7,6 +7,10 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import java.util.ArrayList;
+
 /**
  /**
  * Created by Michael Gleeson on 18/02/2021
@@ -32,7 +36,7 @@ public class BackGroundBoundService extends Service {
         //to our implementation. Any public methods will
         //make up the interface to the bound service
 
-        public void getMeABeer(final int beerId, final Handler h) {
+        public void getMyHeros(final Handler h) {
 
             new Thread(myThreadGroup, new Runnable() {
 
@@ -40,9 +44,12 @@ public class BackGroundBoundService extends Service {
                 public void run() {
 
                     //Do background stuff here.
-           //         Hero b = HeroAdapter.getHeroes();
+                    ArrayList<Hero> b = null;
+
+                        b = HeroAdapter.getHeroes();
+
                     Message m = new Message();
-              //      m.obj = b;
+                    m.obj = b;
                     h.sendMessage(m);
 
                 }//end run()
